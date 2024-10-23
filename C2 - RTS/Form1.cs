@@ -25,10 +25,6 @@ using System.Windows.Forms;
 // SCALARE: S = 0 y 0  => P' = P * S
 //              0 0 1
 
-/* TODO:
- * 
- */
-
 namespace C2___RTS
 {
     public partial class Form1 : Form
@@ -38,22 +34,34 @@ namespace C2___RTS
         public Form1()
         {
             InitializeComponent();
-            grp = new MyGraphics(pictureBox1);
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            Matrix A = new Matrix(@"../../Inputs/mat1.txt");
-            Matrix B = new Matrix(@"../../Inputs/mat2.txt");
+            grp = new MyGraphics(pictureBox1);
 
-            Matrix Sum = A + B;
+            //Matrix A = new Matrix(@"../../Inputs/mat1.txt");
+            //Matrix B = new Matrix(@"../../Inputs/mat2.txt");
 
-            foreach (string s in Sum.View())
-                listBox1.Items.Add(s);
+            //Matrix Sum = A + B;
+            //Matrix Prod = A * B;
 
-            Polygon poligon = new Polygon(@"../../Inputs/poligon.txt");
-            poligon.Draw(grp.g);
-            grp.RefreshGraphics();
+            //foreach (string p in Prod.View())
+            //   listBox1.Items.Add(p);
+
+            Polygon polygon = new Polygon(@"../../Inputs/polygon.txt");
+            polygon.Draw(grp.g, Color.Black);
+
+            //Polygon translated = polygon.Translate(new PointF(30, 30));
+            //translated.Draw(grp.g, Color.Red);
+
+            //Polygon rotated = polygon.Rotate(10, new PointF(pictureBox1.Height / 2, pictureBox1.Width / 2));
+            //rotated.Draw(grp.g, Color.Red);
+
+            Polygon scaled = polygon.Scale(1.5f, 1.5f);
+            scaled.Draw(grp.g, Color.Red);
+
+            grp.Refresh();
         }
     }
 }

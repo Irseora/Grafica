@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -13,7 +14,7 @@ namespace C2___RTS
 {
     internal class Matrix
     {
-        float[,] values;
+        public float[,] values;
 
         public static Matrix Empty;
         public int N { get { return values.GetLength(0); } }
@@ -36,13 +37,24 @@ namespace C2___RTS
             for (int i = 0; i < n; i++)
             {
                 string[] local = data[i].Split(' ');
-                // X
+                for (int j = 0; j < m; j++)
+                    values[i, j] = float.Parse(local[j]);
             }
         }
 
         public Matrix(int n, int m)
         {
             values = new float[n, m];
+        }
+
+        public Matrix(int n, PointF A)
+        {
+            values = new float[2, n];
+            for (int i = 0; i < n; i++)
+            {
+                values[0, i] = A.X;
+                values[1, i] = A.Y;
+            }
         }
 
         // ---------------------------------------------------------
@@ -63,6 +75,28 @@ namespace C2___RTS
             return toRet;
         }
 
+        public Polygon ToPolygon()
+        {
+            Polygon toRet = new Polygon(values.GetLength(1));
+            for (int i = 0; i < values.GetLength(1); i++)
+            {
+                toRet.points[i] = new MyPoint(values[0, i], values[1, i]);
+                //toRet.points[i].X = values[0, i];
+                //toRet.points[i].Y = values[1, i];
+            }
+            return toRet;
+        }
+
+        public Matrix Transpose()
+        {
+            Matrix toRet = new Matrix(M, N);
+            for (int i = 0; i < M; i++)
+                for (int j = 0; j < N; j++)
+                    toRet.values[i, j] = values[j, i];
+            return toRet;
+        }
+                
+
         // ---------------------------------------------------------
 
         public static Matrix operator + (Matrix A, Matrix B)
@@ -75,6 +109,20 @@ namespace C2___RTS
             for (int i = 0; i < A.N; i++)
                 for (int j = 0; j < A.M; j++)
                     toRet.values[i, j] = A.values[i, j] + B.values[i, j];
+
+            return toRet;
+        }
+
+        public static Matrix operator - (Matrix A, Matrix B)
+        {
+            if (A.N != B.N || A.M != B.M)
+                return Matrix.Empty;
+
+            Matrix toRet = new Matrix(A.N, A.M);
+
+            for (int i = 0; i < A.N; i++)
+                for (int j = 0; j < A.M; j++)
+                    toRet.values[i, j] = A.values[i, j] - B.values[i, j];
 
             return toRet;
         }

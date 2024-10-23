@@ -85,7 +85,7 @@
   <ItemGroup>
     <Content Include="Inputs\mat1.txt" />
     <Content Include="Inputs\mat2.txt" />
-    <Content Include="Inputs\poligon.txt" />
+    <Content Include="Inputs\polygon.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
