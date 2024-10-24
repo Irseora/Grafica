@@ -6,10 +6,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-/* TODO:
- * 
- */
-
 namespace C2___RTS
 {
     internal class Matrix
@@ -57,7 +53,7 @@ namespace C2___RTS
             }
         }
 
-        // ---------------------------------------------------------
+        // ------------------------------------------------------------------------------------
 
         public List<string> View()
         {
@@ -79,11 +75,7 @@ namespace C2___RTS
         {
             Polygon toRet = new Polygon(values.GetLength(1));
             for (int i = 0; i < values.GetLength(1); i++)
-            {
                 toRet.points[i] = new MyPoint(values[0, i], values[1, i]);
-                //toRet.points[i].X = values[0, i];
-                //toRet.points[i].Y = values[1, i];
-            }
             return toRet;
         }
 
@@ -95,9 +87,9 @@ namespace C2___RTS
                     toRet.values[i, j] = values[j, i];
             return toRet;
         }
-                
 
-        // ---------------------------------------------------------
+
+        // ------------------------------------------------------------------------------------
 
         public static Matrix operator + (Matrix A, Matrix B)
         {

@@ -8,23 +8,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-//                            1 0 x
-// TRANSLATIE: P(px, py), T = 0 1 y  => P' = P * T
-//                            0 0 1
-
-//              cos t  -sin t  0
-// ROTATIE: R = sin t   cos t  0  => P' = P * R
-//                0       0    1
-//              (fata de origine)
-
-//
-// ROTATIE: R = 
-//
-
-//              x 0 0
-// SCALARE: S = 0 y 0  => P' = P * S
-//              0 0 1
-
 namespace C2___RTS
 {
     public partial class Form1 : Form
@@ -52,14 +35,14 @@ namespace C2___RTS
             Polygon polygon = new Polygon(@"../../Inputs/polygon.txt");
             polygon.Draw(grp.g, Color.Black);
 
-            //Polygon translated = polygon.Translate(new PointF(30, 30));
-            //translated.Draw(grp.g, Color.Red);
+            /*Polygon rotated = polygon.Rotate(10, new PointF(pictureBox1.Height / 2, pictureBox1.Width / 2));
+            rotated.Draw(grp.g, Color.Red);*/
 
-            //Polygon rotated = polygon.Rotate(10, new PointF(pictureBox1.Height / 2, pictureBox1.Width / 2));
-            //rotated.Draw(grp.g, Color.Red);
+            /*Polygon translated = polygon.Translate(new PointF(50, 50));
+            translated.Draw(grp.g, Color.Red);*/
 
-            Polygon scaled = polygon.Scale(1.5f, 1.5f);
-            scaled.Draw(grp.g, Color.Red);
+            /*Polygon scaled = polygon.Scale(1.5f, 1.5f);
+            scaled.Draw(grp.g, Color.Red);*/
 
             grp.Refresh();
         }
