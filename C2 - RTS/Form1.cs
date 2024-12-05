@@ -35,8 +35,8 @@ namespace C2___RTS
             Polygon polygon = new Polygon(@"../../Inputs/polygon.txt");
             polygon.Draw(grp.g, Color.Black);
 
-            /*Polygon rotated = polygon.Rotate(10, new PointF(pictureBox1.Height / 2, pictureBox1.Width / 2));
-            rotated.Draw(grp.g, Color.Red);*/
+            Polygon rotated = polygon.Rotate(10, new PointF(pictureBox1.Height / 2, pictureBox1.Width / 2));
+            rotated.Draw(grp.g, Color.Red);
 
             /*Polygon translated = polygon.Translate(new PointF(50, 50));
             translated.Draw(grp.g, Color.Red);*/
